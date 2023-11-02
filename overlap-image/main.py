@@ -18,15 +18,6 @@ def main():
     if uploaded_file_1 is not None:
         # 画像をOpencvで読み込む
         file_bytes = np.asarray(bytearray(uploaded_file_1.read()), dtype=np.uint8)
-        opencv_image_1 = cv2.imdecode(file_bytes, 1)
-
-        st.image(opencv_image_1, channels="BGR")
-
-    expander2 = st.expander('重畳画像のアップロード')
-    uploaded_file_2 = expander2.file_uploader("画像を選択してください", key="overlay_image")
-    if uploaded_file_2 is not None:
-        # 画像をOpencvで読み込む
-        file_bytes = np.asarray(bytearray(uploaded_file_2.read()), dtype=np.uint8)
         opencv_image_2 = cv2.imdecode(file_bytes, 1)
         #st.image(opencv_image_2)
         im_bgr = cv2.cvtColor(opencv_image_2, cv2.COLOR_RGB2BGR)
@@ -37,8 +28,26 @@ def main():
         if value is not None:
             coordinates = value["x"], value["y"]
             st.write(coordinates)
-            st.session_state["coord_lst"].append(coordinates)
-            st.write(st.session_state["coord_lst"])
+            if len(st.session_state["coord_lst"]) < 4:
+                st.session_state["coord_lst"].append(coordinates)
+                #st.write(st.session_state["coord_lst"])
+                if len(st.session_state["coord_lst"]) == 4:
+                    st.success('座標の入力が完了しました。次は重畳表示したい画像をアップロードしてください。', icon="✅")
+                    st.warning('やり直しがしたい場合はResetボタンをクリックしてください。', icon="⚠️")
+                    if st.button("Reset", type="primary"):
+                        st.session_state["coord_lst"] = []
+            else:
+                st.warning('座標が４個以上入力されました。Resetボタンをクリックしてください。', icon="⚠️")
+                if st.button("Reset", type="primary"):
+                    st.session_state["coord_lst"] = []
+
+    expander2 = st.expander('重畳画像のアップロード')
+    uploaded_file_2 = expander2.file_uploader("画像を選択してください", key="overlay_image")
+    if uploaded_file_2 is not None:
+        # 画像をOpencvで読み込む
+        file_bytes = np.asarray(bytearray(uploaded_file_2.read()), dtype=np.uint8)
+        opencv_image_1 = cv2.imdecode(file_bytes, 1)
+        st.image(opencv_image_1, channels="BGR")
 
 if __name__ == "__main__":
     main()
