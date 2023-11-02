@@ -9,7 +9,7 @@ def main():
     coord_lst = []
     st.title("画像の重畳表示アプリ")
     expander1 = st.expander('ベース画像のアップロード')
-    uploaded_file_1 = expander1.file_uploader("画像を選択してください｀", key="base_image")
+    uploaded_file_1 = expander1.file_uploader("画像を選択してください", key="base_image")
     if uploaded_file_1 is not None:
         # 画像をOpencvで読み込む
         file_bytes = np.asarray(bytearray(uploaded_file_1.read()), dtype=np.uint8)
