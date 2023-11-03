@@ -59,14 +59,25 @@ def main():
     # 画像の重畳表示
     #if img_overlay_coord is not None and len(st.session_state["coord_lst"]) == 4:
     if st.button("Combine", type="primary"):
-        alpha_channel = np.ones((height_img_base, width_img_base), dtype=np.float32)
-
         coord_lst = np.array(st.session_state["coord_lst"], dtype=np.float32)
         mat = cv2.getPerspectiveTransform(img_overlay_coord, coord_lst)
         perspective_image = cv2.warpPerspective(img_overlay, mat, (width_img_base, height_img_base))
 
-        result = cv2.addWeighted(img_base, 1, perspective_image, 1, 0)
-        st.image(result)
+        perspective_image = cv2.cvtColor(perspective_image, cv2.COLOR_BGR2BGRA)
+        perspective_image[np.all(perspective_image == [0, 0, 0, 255], axis=2)] = [0, 0, 0, 0]
+        test = Image.fromarray(perspective_image).convert("RGBA")
+        #st.image(test)
+
+        bg = Image.fromarray(img_base).convert("RGBA")
+        #st.image(bg)
+
+        img_clear = Image.new("RGBA", bg.size, (255, 255, 255, 0))
+        img_clear.paste(test)
         
+        final = Image.alpha_composite(bg, img_clear)
+        st.image(final)
+        #result = cv2.addWeighted(img_base, 1, perspective_image, 1, 0)
+        #st.image(result)
+
 if __name__ == "__main__":
     main()
