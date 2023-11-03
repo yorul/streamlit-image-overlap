@@ -30,6 +30,7 @@ def main():
 
         # クリックした座標をリストに保存する
         if value is not None:
+            st.write("左上、右上、右下、左下の順でクリックしてください。")
             if len(st.session_state["coord_lst"]) < 4:
                 coordinates = value["x"], value["y"]
                 st.write(coordinates)
