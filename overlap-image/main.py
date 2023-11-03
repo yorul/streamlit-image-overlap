@@ -27,10 +27,9 @@ def main():
         height_img_base, width_img_base, channels = img_base.shape[:3]
         # streamlit-image-coordinatesコンポーネントを呼び出す
         value = streamlit_image_coordinates(img_base)
-
+        st.write("左上、右上、右下、左下の順でクリックしてください。")
         # クリックした座標をリストに保存する
         if value is not None:
-            st.write("左上、右上、右下、左下の順でクリックしてください。")
             if len(st.session_state["coord_lst"]) < 4:
                 coordinates = value["x"], value["y"]
                 st.write(coordinates)
