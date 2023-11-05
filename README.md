@@ -2,7 +2,7 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-image-overlap-8nawuvdelmjb5xfgk9z7bj.streamlit.app/)
 
-[![Qiita](https://simpleicons.org/icons/qiita.svg)](https://qiita.com/yorul/items/d1b0a6a774499ced21ef)
+[![Qiita](https://img.shields.io/badge/note-Qiita-64C914.svg?style=flat-square)](https://qiita.com/yorul/items/d1b0a6a774499ced21ef)
 
 ## アプリの概要
 ユーザーは2枚の画像をアップロードし、ベース画像上で4点を選択することで、2枚目の画像を変形し、その領域に配置します。
