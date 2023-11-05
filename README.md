@@ -1,13 +1,12 @@
 # 画像の重畳表示アプリ
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-image-overlap-8nawuvdelmjb5xfgk9z7bj.streamlit.app/)
-
-[![Qiita](https://img.shields.io/badge/note-Qiita-64C914.svg?style=flat-square)](https://qiita.com/yorul/items/d1b0a6a774499ced21ef)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-image-overlap-8nawuvdelmjb5xfgk9z7bj.streamlit.app/)[![Qiita](https://img.shields.io/badge/note-Qiita-64C914.svg?style=flat-square)](https://qiita.com/yorul/items/d1b0a6a774499ced21ef)
 
 ## アプリの概要
 ユーザーは2枚の画像をアップロードし、ベース画像上で4点を選択することで、2枚目の画像を変形し、その領域に配置します。
-Photoshopなどの画像編集ソフトを使えば同様のことは可能ですが、このアプリはより直感的で簡単に操作できます（画像をアップロードし、4点をクリックするだけです）。
-また、定点カメラのような場合では、4点を事前に指定することで一定の自動化も可能となり、特定の用途においては意外と需要があるかもしれません（？）
+Photoshopなどの画像編集ソフトを使えば同様のことは可能ですが、このアプリはより直感的で簡単に操作できます。
+
+また、定点カメラのような場合では、4点を事前に指定することで一定の自動化も可能となります。
 
 
 ## 使い方
@@ -29,12 +28,12 @@ Photoshopなどの画像編集ソフトを使えば同様のことは可能で�
 
 <img width="400" alt="sample4.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3501427/32d490bf-9543-e673-81ec-ed0b7818ce42.png">
 
-以下のような画像が生成されます！
+以下のような画像が生成されます。
 
 <img width="400" alt="sample5.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3501427/32fca43d-9a33-6740-053d-c3af60bfe3c2.png">
 
 ## 開発環境
-Python
-Streamlit
-Visual Studio Code
+・Python
+・Streamlit
+・Visual Studio Code
 
