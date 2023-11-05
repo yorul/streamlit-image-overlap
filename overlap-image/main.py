@@ -25,8 +25,20 @@ def main():
         #st.image(opencv_image_2)
         img_base = cv2.cvtColor(opencv_image_2, cv2.COLOR_RGB2BGR)
         height_img_base, width_img_base, channels = img_base.shape[:3]
+         # expanderの幅を指定
+        expander_width = 700
+
+        # アスペクト比を計算
+        aspect_ratio = width_img_base / height_img_base
+
+        new_width = expander_width
+        new_height = int(expander_width / aspect_ratio)
+
+        # リサイズ
+        resized_img_base = cv2.resize(img_base, (new_width, new_height))
+
         # streamlit-image-coordinatesコンポーネントを呼び出す
-        value = streamlit_image_coordinates(img_base)
+        value = streamlit_image_coordinates(resized_img_base)
         st.write("左上、右上、右下、左下の順でクリックしてください。")
         # クリックした座標をリストに保存する
         if value is not None:
@@ -68,7 +80,7 @@ def main():
         test = Image.fromarray(perspective_image).convert("RGBA")
         #st.image(test)
 
-        bg = Image.fromarray(img_base).convert("RGBA")
+        bg = Image.fromarray(resized_img_base).convert("RGBA")
         #st.image(bg)
 
         img_clear = Image.new("RGBA", bg.size, (255, 255, 255, 0))
